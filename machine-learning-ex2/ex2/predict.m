@@ -15,7 +15,11 @@ p = zeros(m, 1);
 %               You should set p to a vector of 0's and 1's
 %
 
+pos = find((theta'*X')>=0)
 
+for i=1:length(pos)
+p(pos(i)) = 1;
+end 
 
 
 

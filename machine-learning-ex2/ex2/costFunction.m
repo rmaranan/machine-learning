@@ -23,22 +23,13 @@ grad = zeros(size(theta));
 %Compute J by taking the sum of all Js increments
 
 for i = 1:m
-  J = J + 1/m *(-y(i)*log(sigmoid(theta'*X(i,:)'))-(1-y(i))*log(1-sigmoid(theta'*X(i,:)')))
+  J = J + 1/m *(-y(i)*log(sigmoid(theta'*X(i,:)'))-(1-y(i))*log(1-sigmoid(theta'*X(i,:)')));
 end
 
-%interm = 0
-%for i = 1:m
-%  interm(i) = -y(i)*log(sigmoid(X(i)))-(1-y(i))*log(1-sigmoid(X(i)));
-%end
-
-%J = 1/m * sum(interm)
 
 % Compute gradient 
 
-for j = 1:length(theta)
-  %grad(j) = 1/m * sum((sigmoid(theta'*X(:,j)'*theta(i))-y(:)).*X(:,j));
-  grad(j) = 1/m * sum((sigmoid(theta'*X(j,:)')-y(:))'*X(:,j))
-end
+grad = (sigmoid(theta'*X')-y')*X/m;
 
 
 
